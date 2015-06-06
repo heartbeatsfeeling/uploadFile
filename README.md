@@ -3,12 +3,12 @@
 <h3>前端：</h3>
 <dl>
 	<dt>html：</dt>
-	<dd>"&lt;inpreut type="file" name='file' id='file' / &gt;"</dd>
+	<dd>"&lt;input type="file" name='file' id='file' / &gt;"</dd>
 </dl>
 <dl>
 	<dt>js:</dt>
 	<dd class='highlight highlight-js'>
-		<div>$('inpreut:file').each(function(){</div>
+		<div>$('input:file').each(function(){</div>
 		<div>$(this).bind('change',function(){</div>
 		<div>var $this=$(this);</div>
 		<div>upreloadFile({</div>
