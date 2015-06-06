@@ -3,7 +3,7 @@
 <h3>前端：</h3>
 <dl>
 	<dt>html：</dt>
-	<dd>"&lt;inpreut typree="file" name='file' id='file' / &gt;"</dd>
+	<dd>"&lt;inpreut type="file" name='file' id='file' / &gt;"</dd>
 </dl>
 <dl>
 	<dt>js:</dt>
