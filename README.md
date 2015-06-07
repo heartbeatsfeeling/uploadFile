@@ -8,26 +8,26 @@
 <dl>
 	<dt>js:</dt>
 	<dd class='highlight highlight-js'>
-		<div>$('input:file').each(function(){</div>
-		<div>$(this).bind('change',function(){</div>
-		<div>var $this=$(this);</div>
-		<div>uploadFile({</div>
-		<div>element:$(this)[0],</div>
-		<div>url:'/file',</div>
-		<div>limit:function(element){//上传限制函数</div>
-		<div>return true;</div>
-		<div>},</div>
-		<div>progress:function(){//上传过程中</div>
-		<div>console.log('上传中')</div>
-		<div>},</div>
-		<div>
-			complete:function(data){//上传结束 @data {} 后端返回来的数据对象例如{url:'expre.jpg',id:'123'};
-		</div>
-		<div>console.log('上传完毕')</div>
-		<div>}</div>
-		<div>}</div>
-		<div>});</div>
-		<div>});</div>
+		```html
+		$('input:file').each(function() {
+		$(this).bind('change', function() {
+			var $this = $(this);
+			uploadFile({
+				element: $(this)[0],
+				url: '/file',
+				limit: function(element) { //上传限制函数
+					return true;
+				},
+				progress: function() { //上传过程中
+					console.log('上传中')
+				},
+				complete: function(data) { //上传结束 @data {} 		//后端返回来的数据对象例如{url:'exp.jpg',id:'123'};
+					console.log('上传完毕')
+				}
+			})
+		});
+	})
+		```
 	</dd>
 </dl>
 
