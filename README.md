@@ -25,21 +25,11 @@ html:
 		});
 	})
 		```
+<h3>后端：</h3>
+```node
+返回流 :res.end("&lt;body onload=parent.uploadFile.complete("+JSON.stringify(data+"))&gt;&lt;/body&gt;")
+window.parent.uploadFile.complete为固定的回调函数。后台返回数据 如{url:'expre.jpg',id:'123'};
+```
+<h3>注意：</h3>
+上传过程中，会在input:file外套上form（css属性width:100%,display:inline），上传成功后会自动删除。请注意！！
 
-<dl>
-	<dt>后端：</dt>
-	<dd>
-		<div>
-			返回流 :res.end("&lt;body onload=parent.uploadFile.complete("+JSON.stringify(data+"))&gt;&lt;/body&gt;")
-		</div>
-		<div>
-			window.parent.uploadFile.complete为固定的回调函数。后台返回数据 如{url:'expre.jpg',id:'123'};
-		</div>
-	</dd>
-</dl>
-<dl>
-	<dt>注意：</dt>
-	<dd>
-		上传过程中，会在input:file外套上form（css属性width:100%,display:inline），上传成功后会自动删除。请注意！！
-	</dd>
-</dl>
