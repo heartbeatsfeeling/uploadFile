@@ -1,15 +1,12 @@
 <h1>jQuery异步上传文件插件</h1>
 <h2>使用方法</h2>
 <h3>前端：</h3>
-<dl>
-	<dt>html：</dt>
-	<dd>"&lt;input type="file" name='file' id='file' / &gt;"</dd>
-</dl>
-<dl>
-	<dt>js:</dt>
-	<dd class='highlight highlight-js'>
-		```html
-		$('input:file').each(function() {
+html:
+```html
+<input type="file" name='file' id='file1'>
+```
+```js
+	$('input:file').each(function() {
 		$(this).bind('change', function() {
 			var $this = $(this);
 			uploadFile({
@@ -28,8 +25,6 @@
 		});
 	})
 		```
-	</dd>
-</dl>
 
 <dl>
 	<dt>后端：</dt>
