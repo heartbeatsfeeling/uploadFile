@@ -39,7 +39,7 @@
 		return (+new Date).toString() + Math.random().toString(16).substr(2, 8);
 	};
 	if (typeof exports !== 'undefined') {
-		module.exports = uploadFile
+		module.exports = uploadFile;
 	} else {
 		window.uploadFile=uploadFile;
 	};
