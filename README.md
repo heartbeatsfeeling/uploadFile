@@ -28,7 +28,7 @@ js
 ```
 <h3>后端：</h3>
 ```html
-返回流 :res.end("&lt;body onload=parent.uploadFile.complete("+JSON.stringify(data+"))&gt;&lt;/body&gt;")
+返回流 :res.end("<body onload=parent.uploadFile.complete("+JSON.stringify(data)+"))></body>")
 window.parent.uploadFile.complete为固定的回调函数。后台返回数据 如{url:'expre.jpg',id:'123'};
 ```
 <h3>注意：</h3>
