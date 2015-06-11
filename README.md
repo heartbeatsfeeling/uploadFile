@@ -19,7 +19,7 @@ js
 				progress: function() { //上传过程中
 					console.log('上传中')
 				},
-				complete: function(data) { //上传结束 @data {} 		//后端返回来的数据对象例如{url:'exp.jpg',id:'123'};
+				success: function(data) { //上传成功 @data {}//后端返回来的数据对象例如{url:'exp.jpg',id:'123'};
 					console.log('上传完毕')
 				}
 			})
@@ -28,8 +28,8 @@ js
 ```
 <h3>后端：</h3>
 ```html
-返回流 :res.end("<body onload=parent.uploadFile.complete("+JSON.stringify(data)+"))></body>")
-window.parent.uploadFile.complete为固定的回调函数。后台返回数据 如{url:'expre.jpg',id:'123'};
+返回流 :res.end("<body onload=parent.uploadFile.success("+JSON.stringify(data)+"))></body>")
+window.parent.uploadFile.success为固定的回调函数。后台返回数据 如{url:'expre.jpg',id:'123'};
 ```
 <h3>注意：</h3>
 上传过程中，会在input:file外套上form（css属性width:100%,display:inline），上传成功后会自动删除。请注意！！
