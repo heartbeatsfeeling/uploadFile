@@ -8,9 +8,9 @@
 		var $iframe=$("<iframe name='"+target+"'></iframe>");//set name method -- ie 7 bug
 		var limit = config.limit ? config.limit($element) : true;
 		var progress=config.progress||_noop;
-		var complete=config.complete||_noop;
-		uploadFile.complete=function(data){
-			complete(data)
+		var success=config.success||_noop;
+		uploadFile.success=function(data){
+			success(data)
 			$element.unwrap();
 			$iframe.remove();
 		};
