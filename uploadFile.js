@@ -6,7 +6,7 @@
 		var $element=$(config.element);
 		var $form=$("<form>");
 		var $iframe=$("<iframe name='"+target+"'></iframe>");//set name method -- ie 7 bug
-		var limit = config.limit ? config.limit($element) : true;
+		var filter = config.filter ? config.filter($element) : true;
 		var progress=config.progress||_noop;
 		var success=config.success||_noop;
 		uploadFile.success=function(data){
@@ -26,7 +26,7 @@
 		$iframe.css({
 			display:'none'
 		});
-		if(limit){
+		if(filter){
 			document.body.appendChild($iframe[0]);
 			$element.wrap($form);
 			progress($element,$form);
