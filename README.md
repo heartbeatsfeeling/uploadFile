@@ -13,7 +13,7 @@ js
 			uploadFile({
 				element: $(this)[0],
 				url: '/file',
-				limit: function(element) { //上传限制函数
+				filter: function(element) { //上传限制函数
 					return true;
 				},
 				progress: function() { //上传过程中
