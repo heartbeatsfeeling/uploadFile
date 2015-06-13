@@ -16,6 +16,14 @@ js
 				filter: function(element) { //上传限制函数
 					return true;
 				},
+				timeout:20,//超时时间，单位为秒。
+				complete:function(status,data){//
+					/*
+					上传完成后自动调用，
+					成功：status为success，data和success里的data相同
+					超时：status为timeout,data为{};
+					*/
+				},
 				progress: function() { //上传过程中
 					console.log('上传中')
 				},
