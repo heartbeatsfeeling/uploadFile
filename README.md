@@ -7,32 +7,31 @@ html:
 ```
 js
 ```js
-	$('input:file').each(function() {
-		$(this).bind('change', function() {
-			var $this = $(this);
-			uploadFile({
-				element: $(this)[0],
-				url: '/file',
-				filter: function(element) { //上传限制函数
-					return true;
-				},
-				timeout:20,//超时时间，单位为秒。
-				complete:function(status,data){//
-					/*
-					上传完成后自动调用，
-					成功：status为success，data和success里的data相同
-					超时：status为timeout,data为{};
-					*/
-				},
-				progress: function() { //上传过程中
-					console.log('上传中')
-				},
-				success: function(data) { //上传成功 @data {}//后端返回来的数据对象例如{url:'exp.jpg',id:'123'};
-					console.log('上传完毕')
-				}
-			})
-		});
-	})
+	$('input:file').bind('change', function() {
+		var $this = $(this);
+		uploadFile({//调用上传插件
+			element: $(this)[0],//input:file jq节点或dom节点
+			url: '/file',//上传路径
+			filter: function(element) { //上传限制函数
+				return true;
+			},
+			timeout:20,//超时时间，单位为秒。
+			complete:function(status,data){
+				/*
+				上传完成后自动调用（成功或超时）
+				成功：status为success，data和success里的data相同
+				超时：status为timeout,data为{};
+				*/
+			},
+			progress: function() { //上传过程中
+				console.log('上传中')
+			},
+			success: function(data) { 
+				//上传成功 data为后端返回来的数据对象 例如{url:'exp.jpg',id:'123'};
+				console.log('上传完毕')
+			}
+		})
+	});
 ```
 <h3>后端：</h3>
 ```html
