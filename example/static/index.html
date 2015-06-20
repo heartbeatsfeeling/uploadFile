@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>异步上传文件</title>
+	<script src='js/jquery-1.9.1.min.js'></script>
+	<script src="js/uploadFile.js"></script>
+	<style>
+		.img{width:960px;margin:0 auto;}
+		.img img{width:150px;height:150px;margin:10px;}
+		.progress{display: none;}
+	</style>
+</head>
+<body>
+	<p><input id='upload' type="file" name='file' id='file3'><span class="progress">上传中</span></p>
+	<div class='img'></div>
+	<script>
+		$('#upload').on('change', function() {
+			var $this = $(this);
+			uploadFile({
+				element:$this,
+				url: '/file',
+				filter: function(element) {//文件类型过滤
+					// 这里支持 png gif jpg 
+					var type = " " + element.val().split('.').pop() + " ";
+					var filterType = ' png gif jpg ';
+					if (filterType.indexOf(type) != -1) {
+						return true;
+					}else{
+						alert('文件格式不正确，本例中只支持 png gif jpg，可以自己修改');
+						return false;
+					}
+				},
+				timeout:10,//单位为秒
+				complete:function(status,data){
+					//上传结束，status 的值为success或timeout
+					$('.progress').hide();
+				},
+				progress: function() {
+					$('.progress').show();
+				},
+				success: function(data) {//data {flag:true,path:'exp.jpg',id:'123'};
+					if(data.flag){
+						$('.img').append("<img src='"+data.path+"' data-id='"+data.id+"'>");
+					}else{
+						alert('上传失败');
+					}
+				}
+			})
+		});
+	</script>
+</body>
+</html>
