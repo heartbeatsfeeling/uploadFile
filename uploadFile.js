@@ -1,4 +1,4 @@
-//https://github.com/heartbeatsfeeling/uploadFile
+//https://github.com/heartbeatsfeeling/uploadFile 
 ;(function($) {
 	var uploadFile = function(config) {
 		var url = config.url;
