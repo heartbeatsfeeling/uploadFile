@@ -2,13 +2,13 @@
 <h2>兼容</h2>
 <p>兼容IE6+、Firefox、chrome等主流浏览器</p>
 <h2>说明</h2>
-<h3>本插件优点</h3>
+<h5>本插件优点</h5>
 <ul>
 	<li>1、支持html5模式上传</li>
 	<li>2、支持单文件和多文件上传</li>
 	<li>3、兼容常见主流浏览器（IE6+）</li>
 </ul>
-<h3>本插件缺点</h3>
+<h5>本插件缺点</h5>
 <ul>
 	<li>1、对错误处理支持不够好，统一放在timeoutFn函数里了</li>
 	<li>2、测试不足，如果在使用中发现问题，请及时提交issues</li>
@@ -78,4 +78,4 @@ js
 	<li>2、后台返回数据应为JSON格式的<strong>字符串</strong>,而不是纯JSON类型数据，因为IE低版会对form提交返回的纯json类型数据做下载处理。</li>
 </ul>
 <h3>License</h3>
-<pre>MIT license</pre>
+<p>MIT license</p>
