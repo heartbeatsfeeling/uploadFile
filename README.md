@@ -38,10 +38,10 @@ js
 ```
 <h3>后端：</h3>
 ```html
-返回JSON格式字符串 :res.end("{code:1,id:'imgID','src':'test.jpg'}");
+返回JSON格式<strong>字符串</strong> :res.end("{code:1,id:'imgID','src':'test.jpg'}");
 ```
 <h3>注意：</h3>
 <ul>
-	<li>1、上传过程中，会在input:file外套上form（css属性width:100%,display:inline），上传成功后会自动删除。请注意！！</li>
-	<li>2、后台返回数据应为JSON格式的<strong>字符串</strong>,不能返回纯JSON数据，因为IE低版会对form提交返回的json数据做下载处理。</li>
+	<li>1、上传过程中，会在input:file外套上form（css属性width:100%,display:inline），上传成功后会自动删除。</li>
+	<li>2、后台返回数据应为JSON格式的<strong>字符串</strong>,而不是纯JSON类型数据，因为IE低版会对form提交返回的纯json类型数据做下载处理。</li>
 </ul>
