@@ -1,9 +1,12 @@
-<h1>jQuery异步上传文件插件</h1>
+<h1>jQuery异步上传文件插件v0.9</h1>
 <h2>使用方法</h2>
 <h3>前端：</h3>
 html:
 ```html
-<input type="file" name='file' id='file1'>
+单文件：
+<input type="file" name="file" id="fileToUpload">
+多文件：
+<input type="file" name="file" id="fileToUpload" multiple="multiple">
 ```
 js
 ```js
@@ -35,8 +38,10 @@ js
 ```
 <h3>后端：</h3>
 ```html
-返回流 :res.end("<body onload=parent.uploadFile.success("+JSON.stringify(data)+"))></body>")
-window.parent.uploadFile.success为固定的回调函数。后台返回数据 如{url:'expre.jpg',id:'123'};
+返回JSON格式字符串 :res.end("{code:1,id:'imgID','src':'test.jpg'}");
 ```
 <h3>注意：</h3>
-上传过程中，会在input:file外套上form（css属性width:100%,display:inline），上传成功后会自动删除。请注意！！
+<ul>
+	<li>1、上传过程中，会在input:file外套上form（css属性width:100%,display:inline），上传成功后会自动删除。请注意！！</li>
+	<li>2、后台返回数据应为JSON格式的<strong>字符串</strong>,不能返回纯JSON数据，因为IE低版会对form提交返回的json数据做下载处理。</li>
+</ul>
