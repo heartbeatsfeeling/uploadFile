@@ -10,7 +10,7 @@
 </ul>
 <h5>本插件缺点</h5>
 <ul>
-	<li>1、对错误处理支持不够好，统一放在timeoutFn函数里了</li>
+	<li>1、对错误处理支持不够好，统一放在了timeoutFn函数里</li>
 	<li>2、测试不足，如果在使用中发现问题，请及时提交issues</li>
 </ul>
 <h2>使用方法</h2>
@@ -26,7 +26,7 @@ js
 ```js
 	$('#fileToUpload').bind('change',function(){
 		var $this = $(this);
-		uploadFile({//调用上传插件
+		uploadFile({
 			element: $(this)[0],//input:file jq节点或dom节点
 			url: '/test',//上传路径
 			html5Mode:true,//是否开启Html5模式，开启后如果浏览器支持window.FormData，则自动切换到HTML5模式上传文件，默认为false
