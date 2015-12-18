@@ -1,7 +1,18 @@
 <h1>jQuery异步上传文件插件v0.9</h1>
 <h2>兼容</h2>
-
 <p>兼容IE6+、Firefox、chrome等主流浏览器</p>
+<h2>说明</h2>
+<h3><pre>本插件优点</pre></h3>
+<ul>
+	<li>1、支持html5模式上传</li>
+	<li>2、支持单文件和多文件上传</li>
+	<li>3、兼容常见主流浏览器（IE6+）</li>
+</ul>
+<h3><pre>本插件缺点</pre></h3>
+<ul>
+	<li>1、对错误处理支持不够好，统一放在timeoutFn函数里了</li>
+	<li>2、测试不足，如果在使用中发现问题，请及时提交issues</li>
+</ul>
 <h2>使用方法</h2>
 <h3>前端：</h3>
 html:
@@ -18,7 +29,7 @@ js
 		uploadFile({//调用上传插件
 			element: $(this)[0],//input:file jq节点或dom节点
 			url: '/test',//上传路径
-			html5Mode:true,//是否开启Html5模式，开启后如果浏览器支持window.FormData，则自动切换到HTML5模式上传文件
+			html5Mode:true,//是否开启Html5模式，开启后如果浏览器支持window.FormData，则自动切换到HTML5模式上传文件，默认为false
 			filter: function(element) {//上传限制函数
 				/*
 					上传开始时，会触发该函数
