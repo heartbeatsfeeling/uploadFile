@@ -30,7 +30,7 @@ js
 			element: $(this)[0],//input:file jq节点或dom节点
 			url: '/test',//上传路径
 			html5Mode:true,//是否开启Html5模式，开启后如果浏览器支持window.FormData，则自动切换到HTML5模式上传文件，默认为false
-			filter: function(element) {//上传限制函数
+			filter: function($element) {//上传限制函数
 				/*
 					上传开始时，会触发该函数
 					返回true可以上传，返回false则禁止上传
@@ -40,12 +40,12 @@ js
 				return true;
 			},
 			timeout:10000,//设置上传超时时间，单位为毫秒
-			timeoutFn:function(element){//超时函数
+			timeoutFn:function($element){//超时函数
 				/*
 					如果设置了timeout同时上传超时，会触发该函数
 				*/
 			},
-			complete:function(status){//上传完成
+			complete:function($element){//上传完成
 				/*
 					上传结束（不管成功还是失败）会触发该函数
 				*/
@@ -60,7 +60,7 @@ js
 
 				}
 			},
-			success: function(data,$input) {//上传成功
+			success: function(data,$element) {//上传成功
 				/*
 					上传成功会触发该函数
 					data为后台返回的json格式字符串
