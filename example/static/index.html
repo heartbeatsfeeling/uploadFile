@@ -13,42 +13,53 @@
 	</style>
 </head>
 <body>
-	<p><input id='upload' type="file" name='file' id='file3'><span class="progress">上传中</span></p>
+	<p><input id='fileToUpload' type="file" name='file' id='file3'><span class="progress">上传中</span></p>
 	<div class='img'></div>
 	<script>
-		$('#upload').on('change', function() {
-			var $this = $(this);
-			uploadFile({
-				element:$this,
-				url: '/file',
-				filter: function(element) {//文件类型过滤
-					// 这里支持 png gif jpg 
-					var type = " " + element.val().split('.').pop() + " ";
-					var filterType = ' png gif jpg ';
-					if (filterType.indexOf(type) != -1) {
-						return true;
-					}else{
-						alert('文件格式不正确，本例中只支持 png gif jpg，可以自己修改');
-						return false;
-					}
-				},
-				timeout:10,//单位为秒
-				complete:function(status,data){
-					//上传结束，status 的值为success或timeout
-					$('.progress').hide();
-				},
-				progress: function() {
-					$('.progress').show();
-				},
-				success: function(data) {//data {flag:true,path:'exp.jpg',id:'123'};
-					if(data.flag){
-						$('.img').append("<img src='"+data.path+"' data-id='"+data.id+"'>");
-					}else{
-						alert('上传失败');
-					}
-				}
-			})
-		});
+		$('#fileToUpload').bind('change',function(){
+		        var $this = $(this);
+		        $this.uploadFile({
+		            url: '/file',//上传路径
+		            html5Mode:false,//是否开启Html5模式，开启后如果浏览器支持window.FormData，则自动切换到HTML5模式上传文件，默认为false
+		            filter: function($element) {//上传限制函数
+		                /*
+		                    上传开始时，会触发该函数
+		                    返回true可以上传，返回false则禁止上传
+		                    例如只可以上传gif
+		                    return $(element).val().indexOf('.gif')!==-1
+		                */
+		                return true;
+		            },
+		            timeout:1000,//设置上传超时时间，单位为毫秒
+		            timeoutFn:function($element){//超时函数
+		                /*
+		                    如果设置了timeout同时上传超时，会触发该函数
+		                */
+		            },
+		            complete:function($element){//上传完成
+		                /*
+		                    上传结束（不管成功还是失败）会触发该函数
+		                */
+		            },
+		            progress: function(data,$element) {//上传过程中
+		                /*
+		                    上传过程中触发该函数
+		                */
+		                if(data.html5Mode){//是否开启同时支持html5上传模式
+		                    //Math.round(data.loaded/data.total) 上传进度
+		                }else{
+
+		                }
+		            },
+		            success: function(data,$element) {//上传成功
+		                /*
+		                    上传成功会触发该函数
+		                    data为后台返回的json格式字符串
+		                    插件会自动字data转成Object
+		                */
+		            }
+		        })
+		    });
 	</script>
 </body>
 </html>
