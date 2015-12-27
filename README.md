@@ -26,8 +26,7 @@ js
 ```js
 	$('#fileToUpload').bind('change',function(){
 		var $this = $(this);
-		uploadFile({
-			element: $(this)[0],//input:file jq节点或dom节点
+		$this.uploadFile({
 			url: '/test',//上传路径
 			html5Mode:true,//是否开启Html5模式，开启后如果浏览器支持window.FormData，则自动切换到HTML5模式上传文件，默认为false
 			filter: function($element) {//上传限制函数
