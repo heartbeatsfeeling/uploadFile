@@ -1,0 +1,21 @@
+.cf:before,.cf:after {
+	content:"";
+	display:table;
+}
+.cf:after { clear:both; }
+body{font-size: 12px;font-family: "Helvetica Neue",Helvetica,Arial,sans-serif}
+.cf { zoom:1; }
+.left{float:left;}
+.right{float:right;}
+h1,h2{
+	font-weight: 500;
+}
+.wrap{
+	width:980px;
+	margin:0 auto;
+}
+header{
+	height:50px;
+	line-height: 50px;
+	border-bottom:1px solid #cecece;
+}
