@@ -15,18 +15,181 @@
 			<div class="github right">
 				<a href="https://github.com/heartbeatsfeeling/uploadFile" title='Github'>Github</a>
 			</div>
+			<div class="loading"></div>
 		</div>
 	</header>
 	<div class="wrap">
 		<div class="item">
 			<h2>单文件上传</h2>
 			<dl>
+				<dt>效果：<input type="file" id='upload1' name='file'></dt>
+				<dd>
+					<ul></ul>
+				</dd>
+			</dl>
+			<dd>
+				<script>
+					$('#upload1').bind('change',function(){
+						var $this = $(this);
+						$this.uploadFile({
+							url: 'http://115.28.213.244:3000/file',
+							filter: function($element) {
+								var ext="" +$element.val().split('.').pop()+" ";
+								if(' jpg gif png '.indexOf(ext)!==-1){
+									return true;
+								}else{
+									alert('只可以上传图片');
+									return false;
+								}
+							},
+							timeout:10000,
+							timeoutFn:function($element){
+								alert('上传超时')
+							},
+							complete:function($element){
+								var $load=$('.loading');
+								$load.hide();
+							},
+							progress: function(data,$element) {
+								var $load=$('.loading');
+								$load.show();
+							},
+							success: function(data,$element) {
+								if(data.flag){
+									$element.closest('.item').find('ul').append("<li><img src='"+data.path+"'></li>")
+								}else{
+									
+								}
+							}
+						})
+					});
+				</script>
+			</dd>
+			<dl>
+				<dt>html:</dt>
+				<dd>&lt;input type="file" id='upload1' name='file' &gt;</dd>
+				<dt>js：</dt>
+				<dd class='sourcejs hide'>
+					$('#upload1').bind('change',function(){
+						var $this = $(this);
+						$this.uploadFile({
+							url: 'http://115.28.213.244:3000/file',
+							filter: function($element) {
+								var ext="" +$element.val().split('.').pop()+" ";
+								if(' jpg gif png '.indexOf(ext)!==-1){
+									return true;
+								}else{
+									alert('只可以上传图片');
+									return false;
+								}
+							},
+							timeout:10000,
+							timeoutFn:function($element){
+								alert('上传超时')
+							},
+							complete:function($element){
+								var $load=$('.loading');
+								$load.hide();
+							},
+							progress: function(data,$element) {
+								var $load=$('.loading');
+								$load.show();
+							},
+							success: function(data,$element) {
+
+							}
+						})
+					});
+				</dd>
+				<dd> <textarea name="" class='beautifyjs' readonly="true"></textarea> </dd>
+			 </dl>
+		</div>
+		<div class="item">
+			<h2>多文件上传</h2>
+			<dl>
 				<dt>效果：</dt>
 			</dl>
 			<dd>
-				<input type="file" id='upload1' name='file'>
+				<input type="file" id='upload2' name='file' multiple="multiple">
 				<script>
-					$('#upload1').bind('change',function(){
+					$('#upload2').bind('change',function(){
+						var $this = $(this);
+						$this.uploadFile({
+							url: 'http://115.28.213.244:3000/file',
+							filter: function($element) {
+								var ext=$element.val().split('.').pop();
+								if(ext.indexOf('jpg gif png')!==-1){
+									return true;
+								}else{
+									alert('只可以上传图片');
+									return false;
+								}
+							},
+							timeout:10000,
+							timeoutFn:function($element){
+
+							},
+							complete:function($element){
+
+							},
+							progress: function(data,$element) {
+								if(data.html5Mode){
+									
+								}else{
+
+								}
+							},
+							success: function(data,$element) {
+
+							}
+						})
+					});
+				</script>
+			</dd>
+			<dl>
+				<dt>html:</dt>
+				<dd>&lt;input type="file" id='upload1' name='file' multiple="multiple" &gt;</dd>
+				<dt>js：</dt>
+				<dd class='sourcejs hide'>
+					$('#upload2').bind('change',function(){
+						var $this = $(this);
+						$this.uploadFile({
+							url: 'http://115.28.213.244:3000/file',
+							filter: function($element) {
+								return true;
+							},
+							timeout:10000,
+							timeoutFn:function($element){
+
+							},
+							complete:function($element){
+
+							},
+							progress: function(data,$element) {
+								if(data.html5Mode){
+									
+								}else{
+
+								}
+							},
+							success: function(data,$element) {
+
+							}
+						})
+					});
+				</dd>
+				<dd> <textarea name="" class='beautifyjs' readonly="true"></textarea> </dd>
+			 </dl>
+		</div>
+		<div class="item">
+			<h2>带进度条文件上传</h2>
+			<dl>
+				<dt>效果：</dt>
+			</dl>
+			<dd>
+				<input type="file" id='upload1' name='file' multiple="multiple">
+				<script>
+					$('#upload3').bind('change',function(){
 						var $this = $(this);
 						$this.uploadFile({
 							url: 'http://115.28.213.244:3000/file',
@@ -56,106 +219,47 @@
 			</dd>
 			<dl>
 				<dt>html:</dt>
-				<dd>&lt;input type="file" id='upload1' name='file' &gt;</dd>
+				<dd>&lt;input type="file" id='upload1' name='file'  multiple="multiple" &gt;</dd>
 				<dt>js：</dt>
-				<dd class='beautify1'>
-					```js
-						$('#upload1').bind('change',function(){
-							var $this = $(this);
-							$this.uploadFile({
-								url: 'http://115.28.213.244:3000/file',
-								filter: function($element) {
-									return true;
-								},
-								timeout:10000,
-								timeoutFn:function($element){
+				<dd class='sourcejs hide'>
+					$('#upload3').bind('change',function(){
+						var $this = $(this);
+						$this.uploadFile({
+							url: 'http://115.28.213.244:3000/file',
+							filter: function($element) {
+								return true;
+							},
+							timeout:10000,
+							timeoutFn:function($element){
 
-								},
-								complete:function($element){
+							},
+							complete:function($element){
 
-								},
-								progress: function(data,$element) {
-									if(data.html5Mode){
-										
-									}else{
-
-									}
-								},
-								success: function(data,$element) {
+							},
+							progress: function(data,$element) {
+								if(data.html5Mode){
+									
+								}else{
 
 								}
-							})
-						});
-					```js
+							},
+							success: function(data,$element) {
+
+							}
+						})
+					});
 				</dd>
-			</dl>
-		</div>
-		<div class="item">
-			<h2>多文件上传</h2>
-			效果：
-			<input type="file" id='upload1' name='file' multiple="multiple">
-			<script>
-				$('#upload1').bind('change',function(){
-					var $this = $(this);
-					$this.uploadFile({
-						url: 'http://115.28.213.244:3000/file',
-						filter: function($element) {
-							return true;
-						},
-						timeout:10000,
-						timeoutFn:function($element){
-
-						},
-						complete:function($element){
-
-						},
-						progress: function(data,$element) {
-							if(data.html5Mode){
-								
-							}else{
-
-							}
-						},
-						success: function(data,$element) {
-
-						}
-					})
-				});
-			</script>
-		</div>
-		<div class="item">
-			<h2>带进度条文件上传</h2>
-			效果：
-			<input type="file" id='upload1' name='file' multiple="multiple">
-			<script>
-				$('#upload1').bind('change',function(){
-					var $this = $(this);
-					$this.uploadFile({
-						url: 'http://115.28.213.244:3000/file',
-						filter: function($element) {
-							return true;
-						},
-						timeout:10000,
-						timeoutFn:function($element){
-
-						},
-						complete:function($element){
-
-						},
-						progress: function(data,$element) {
-							if(data.html5Mode){
-								
-							}else{
-
-							}
-						},
-						success: function(data,$element) {
-
-						}
-					})
-				});
-			</script>
+				<dd> <textarea name="" class='beautifyjs' readonly="true"></textarea> </dd>
+			 </dl>
 		</div>
 	</div>
+	<script>
+		$('.item').each(function(){
+			var $this=$(this);
+			var source=$this.find('.sourcejs').text();
+			var $beautifyjs=$this.find('.beautifyjs');
+			$beautifyjs.val(js_beautify(source))
+		})
+	</script>
 </body>
 </html>
