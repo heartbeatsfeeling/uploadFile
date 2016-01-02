@@ -24,6 +24,9 @@
 		var html5Mode = config.html5Mode;
 		var formData;
 		var xhr = new XMLHttpRequest();
+		if (!filter) {
+			return false;
+		};
 		var _remove = function() {
 			$element.unwrap();
 			$iframe.remove();
@@ -61,45 +64,42 @@
 		$iframe.css({
 			display: 'none'
 		});
-		if (filter) {
-			$element.wrap($form);
-			if (!!window.FormData && html5Mode) {
-				formData = new FormData($("form[target='" + target + "']")[0]);
-
-				xhr.upload.addEventListener("progress", function(evt) { // progress
-					var data = {};
-					data.html5Mode = html5Mode;
-					data.loaded = evt.loaded;
-					data.total = evt.total;
-					progress(data, $element)
-				}, false);
-				xhr.onreadystatechange = function(e) { //complete
-					var data = '';
-					if (xhr.readyState == 4) {
-						if (xhr.status == 200) {
-							data = _parseData(xhr.responseText);
-							_success(data);
-						} else {
-							_remove();
-							complete($element);
-						};
+		$element.wrap($form);
+		if (!!window.FormData && html5Mode) {
+			formData = new FormData($("form[target='" + target + "']")[0]);
+			xhr.upload.addEventListener("progress", function(evt) { // progress
+				var data = {};
+				data.html5Mode = html5Mode;
+				data.loaded = evt.loaded;
+				data.total = evt.total;
+				progress(data, $element)
+			}, false);
+			xhr.onreadystatechange = function(e) { //complete
+				var data = '';
+				if (xhr.readyState == 4) {
+					if (xhr.status == 200) {
+						data = _parseData(xhr.responseText);
+						_success(data);
+					} else {
+						_remove();
+						complete($element);
 					};
 				};
-				// start upload
-				xhr.open("POST", url, true);
-				xhr.send(formData);
-			} else {
-				document.body.appendChild($iframe[0]);
-				progress({}, $element);
-				$("form[target=" + target + "]").submit();
-				$iframe.bind('load', function() {
-					var $this = $(this);
-					var data = $this.contents().find('body').text();
-					data = _parseData(data);
-					_success(data);
-				});
 			};
-		} else {}
+			// start upload
+			xhr.open("POST", url, true);
+			xhr.send(formData);
+		} else {
+			document.body.appendChild($iframe[0]);
+			progress({}, $element);
+			$("form[target=" + target + "]").submit();
+			$iframe.bind('load', function() {
+				var $this = $(this);
+				var data = $this.contents().find('body').text();
+				data = _parseData(data);
+				_success(data);
+			});
+		};
 	};
 	var _noop = function() {};
 	var _uuid = function() {
