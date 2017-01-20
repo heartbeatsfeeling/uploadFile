@@ -5,7 +5,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>异步上传文件</title>
 	<script src='js/jquery-1.9.1.min.js'></script>
-	<script src="js/uploadFile.js"></script>
+	<script src="js/jquery.uploadFile.js"></script>
 	<style>
 		.img{width:960px;margin:0 auto;}
 		.img img{width:150px;height:150px;margin:10px;}
@@ -20,7 +20,7 @@
 		        var $this = $(this);
 		        $this.uploadFile({
 		            url: '/file',//上传路径
-		            html5Mode:false,//是否开启Html5模式，开启后如果浏览器支持window.FormData，则自动切换到HTML5模式上传文件，默认为false
+		            html5Mode:true,//是否开启Html5模式，开启后如果浏览器支持window.FormData，则自动切换到HTML5模式上传文件，默认为false
 		            filter: function($element) {//上传限制函数
 		                /*
 		                    上传开始时，会触发该函数

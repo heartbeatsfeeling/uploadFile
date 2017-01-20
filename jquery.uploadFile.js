@@ -28,7 +28,7 @@
 			return false;
 		};
 		var _remove = function() {
-			$element.unwrap();
+			$element.unwrap($form);
 			$iframe.remove();
 		};
 		var _success = function(data) {
