@@ -74,7 +74,7 @@ js
 <h3>注意：</h3>
 <ul>
 	<li>1、上传过程中，会在input:file外套上form（css属性width:100%,display:inline），上传成功后会自动删除。</li>
-	<li>2、后台返回数据应为JSON格式的<strong>字符串</strong>,而不是纯JSON类型数据，因为IE低版会对form提交返回的纯json类型数据做下载处理。</li>
+	<li>2、后台返回数据应为<strong>字符串</strong>或JSON格式的<strong>字符串</strong>（如果是json格式的字符串，插件会帮你解析好格式）,不要返回纯JSON类型数据，因为IE低版会对form提交返回的纯json类型数据做下载处理。</li>
 </ul>
 <h3>License</h3>
 <p>MIT license</p>
