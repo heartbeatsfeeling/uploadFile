@@ -16,12 +16,14 @@
 <h2>使用方法</h2>
 <h3>前端：</h3>
 html:
+
 ```html
 单文件：
 <input type="file" name="file" id="fileToUpload">
 多文件：
 <input type="file" name="file" id="fileToUpload" multiple="multiple">
 ```
+
 js
 ```js
 	$('#fileToUpload').bind('change',function(){
